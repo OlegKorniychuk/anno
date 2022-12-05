@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="../public/css/style.css">
+  <title>Editor</title>
+</head>
+<body>
+  <script src="/scripts/index.js"></script>
+  <header class="container websiteHeader flex">
+    <div class="logo">
+      LOGO
+    </div>
+    <ul class="menu">
+      <li><a href="">page1</a></li>
+      <li><a href="">page2</a></li>
+      <li><a href="">page3</a></li>
+    </ul>
+  </header>
+  <form action="/" method="POST">
+    <div class="toolbar container flex">
+      <button type="submit" class="toolButton" onclick="bolden()">Bold</button>
+      <button type="submit" class="toolButton" onclick="bgYellow()">Yellow</button>
+    </div>
+    <div class="editField container">
+      <label for="inputArea"></label>
+      <!-- <textarea name="name" id="inputArea" cols="30" rows="10"></textarea> -->
+      <div contenteditable="true" id="inputArea">
+        Some text to edit
+      </div>
+    </div>
+  </form>
+</body>
+</html>
