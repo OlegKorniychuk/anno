@@ -1,0 +1,88 @@
+div.authCenter {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+div.authBlock {
+	padding: 2vw;
+	width: 20vw;
+	background-color: #051622;
+	user-select: none;
+	font-family: "Comfortaa";
+	font-size: 0.6vw;
+	box-shadow: 0 0 0.5vw 0 #000;
+}
+
+div.authHeader {
+	width: 100%;
+	font-size: 1.5vw;
+	text-align: center;
+	text-shadow: 0 0 0.25vw #DEB992;
+	color: #DEB992;
+}
+
+div.authLine {
+	margin-top: 2vw;
+	margin-bottom: 2vw;
+	width: 100%;
+	height: 0.075vw;
+	background-color: #DEB992;
+	box-shadow: 0 0 0.25vw 0 #DEB992;
+}
+
+form.authForm {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+form.authForm > input {
+	margin: 0;
+	margin-bottom: 1vw;
+	padding: 1vw;
+	width: 100%;
+	background-color: #0b1b26;
+	color: #DEB992;
+	font-family: "Comfortaa";
+	box-sizing: border-box;
+	border: none;
+	font-size: 0.75vw;
+	transition: box-shadow 0.3s ease, background-color 0.3s ease;
+
+}
+form.authForm > input:focus {
+	outline: none;
+	border: none;
+	background-color: #1b2b36;
+	box-shadow: inset 0.075vw 0 0 0 #DEB992;
+}
+form.authForm > input.button {
+	background-color: #1BA098;
+	color: #051622;
+	cursor: pointer;
+	font-weight: bold;
+	text-shadow: none;
+	box-shadow: 0 0 0.25vw 0 #1BA098;
+}
+form.authForm > input.button:hover {
+	background-color: #48b5af;
+}
+
+div.authSugBtn {
+	width: 100%;
+	text-align: center;
+	color: grey;
+	font-weight: bold;
+}
+div.authSugBtn > a {
+	margin-top: 1vw;
+	display: block;
+	color: #1BA098;
+	text-shadow: 0 0 0.25vw #1BA098;
+	transition: color 0.3s ease;
+}
+div.authSugBtn > a:hover {
+	color: #48b5af;
+}
