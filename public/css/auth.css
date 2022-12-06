@@ -60,10 +60,10 @@ form.authForm > input:focus {
 }
 form.authForm > input.button {
 	background-color: #1BA098;
-	color: #DEB992;
+	color: #051622;
 	cursor: pointer;
 	font-weight: bold;
-	text-shadow: 0 0 0.25vw #DEB992;
+	text-shadow: none;
 	box-shadow: 0 0 0.25vw 0 #1BA098;
 }
 form.authForm > input.button:hover {
