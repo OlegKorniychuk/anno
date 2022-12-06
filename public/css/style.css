@@ -1,1 +1,18 @@
+@font-face {
+	font-family: "Comfortaa";
+	src: url("Comfortaa-Light.ttf");
+}
 
+html {
+	width: 100%;
+	height: 100%;
+}
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+	background-image: url("./subtle-prism.svg");
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
