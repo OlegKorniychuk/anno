@@ -1,0 +1,53 @@
+table.fileTop {
+	margin: 0;
+	padding: 1vw;
+	border-spacing: 0;
+	width: 100%;
+}
+table.fileTop td.fileName {
+	text-align: left;
+	color: #DEB992;
+	text-shadow: 0 0 0.25vw #DEB992;
+	font-weight: bold;
+}
+table.fileTop td.fileActions {
+	text-align: right;
+}
+
+table.fileBottom {
+	margin: 0;
+	padding: 1vw;
+	border-spacing: 0;
+	width: 100%;
+}
+
+div.fileBtn {
+	display: inline-block;
+	padding: 0.5vw;
+	width: 5vw;
+	background-color: #1BA098;
+	color: #051622;
+	cursor: pointer;
+	font-weight: bold;
+	text-align: center;
+	box-shadow: 0 0 0.25vw 0 #1BA098;
+	transition: background-color 0.3s ease;
+	box-sizing: border-box;
+}
+div.fileBtn:hover {
+	background-color: #48b5af;
+}
+
+div.fileLine {
+	width: 100%;
+	height: 0.075vw;
+	background-color: #DEB992;
+	box-shadow: 0 0 0.25vw 0 #DEB992;
+}
+
+div.content {
+	padding: 1vw;
+	width: 100%;
+	height: 31vw;
+	overflow-y: auto;
+}

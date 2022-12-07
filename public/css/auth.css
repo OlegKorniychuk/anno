@@ -1,11 +1,3 @@
-div.authCenter {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
 div.authBlock {
 	padding: 2vw;
 	width: 20vw;
