@@ -1,0 +1,86 @@
+div.viewBlock {
+	width: 50vw;
+	user-select: none;
+	font-family: "Comfortaa";
+	font-size: 0.75vw;
+	background-color: #051622;
+	box-shadow: 0 0 0.5vw 0 #000;
+}
+
+div.fileMarkdown {
+	display: inline-block;
+	width: 10vw;
+}
+div.fileMarkdown > div.fileDrpDn {
+	width: 10vw;
+	display: none;
+	position: absolute;
+	background-color: #0b1b26;
+	text-align: left;
+	z-index: 1;
+	overflow-y: auto;
+	text-transform: uppercase;
+	font-weight: normal;
+	box-shadow: 0 0 0.25vw 0 #000;
+}
+div.fileMarkdown > div.fileDrpDn > div.fileDrpItm {
+	color: #DEB992;
+	padding: 0.5vw;
+	cursor: pointer;
+	transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+div.fileMarkdown > div.fileDrpDn > div.fileDrpItm:hover {
+	background-color: #1b2b36;
+	text-shadow: 0 0 0.25vw #DEB992;
+}
+div.fileMarkdown:hover > div.fileDrpDn {
+	display: block;
+}
+div.fileMarkdown:has(div.fileDrpDn:hover) > div.markdownLabel {
+	background-color: #48b5af;
+}
+
+div.markdownLabel {
+	display: inline-block;
+	padding: 0.5vw;
+	width: 100%;
+	background-color: #1BA098;
+	color: #051622;
+	cursor: pointer;
+	font-weight: bold;
+	text-align: center;
+	box-shadow: 0 0 0.25vw 0 #1BA098;
+	transition: background-color 0.3s ease;
+	box-sizing: border-box;
+}
+div.markdownLabel:hover {
+	background-color: #48b5af;
+}
+
+div.fileProgress {
+	margin-left: 1vw;
+	padding: 0.5vw;
+	padding-bottom: 0.425vw;
+	display: inline-block;
+	width: 10vw;
+	text-align: center;
+	font-weight: bold;
+	color: #1BA098;
+	text-shadow: 0 0 0.25vw #1BA098;
+	background-color: #1b2b36;
+	box-sizing: border-box;
+}
+div.fileProgress > div.progressBar {
+	width: 30%;
+	height: 0.075vw;
+	background-color: #1BA098;
+	box-shadow: 0 0 0.25vw 0 #1BA098;
+	transition: width 0.3s ease;
+}
+
+td.backBtn {
+	text-align: left;
+}
+td.editBtn {
+	text-align: right;
+}

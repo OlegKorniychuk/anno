@@ -1,0 +1,72 @@
+div.editBlock {
+	width: 66.6vw;
+	user-select: none;
+	font-family: "Comfortaa";
+	font-size: 0.75vw;
+}
+
+table.edit {
+	margin: 0;
+	padding: 0;
+	border-spacing: 2vw;
+	width: 100%;
+	box-sizing: border-box;
+}
+table.edit td.editMain, table.edit td.editSide {
+	background-color: #051622;
+	box-shadow: 0 0 0.5vw 0 #000;
+}
+table.edit td.editMain {
+	width: 75%;
+
+}
+table.edit td.editSide {
+	vertical-align: top;
+}
+
+
+
+td.acceptBtn {
+	width: 33%;
+	text-align: left;
+}
+td.clearBtn {
+	width: 33%;
+	text-align: center;
+}
+td.skipBtn {
+	text-align: right;
+}
+
+
+
+div.sideLabel, div.sideInfo	{
+	padding: 1vw;
+	width: 100%;
+	box-sizing: border-box;
+}
+div.sideLabel > p {
+	margin: 0;
+	padding: 0.5vw;
+	color: #DEB992;
+	text-shadow: 0 0 0.25vw #DEB992;
+	font-weight: bold;
+}
+div.sideInfo > div {
+	padding: 0.5vw;
+	width: 100%;
+}
+div.sideInfo p {
+	margin: 0;
+	display: inline-block;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+div.sideInfo p.infoLabel {
+	color: #1BA098;
+	text-shadow: 0 0 0.25vw #1BA098;
+}
+div.sideInfo p.infoValue {
+	color: #DEB992;
+	text-shadow: 0 0 0.25vw #DEB992;
+}
