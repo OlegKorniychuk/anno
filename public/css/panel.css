@@ -1,16 +1,8 @@
-div.panelCenter {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-}
-
 div.panelBlock {
 	width: 80vw;
 	user-select: none;
 	font-family: "Comfortaa";
-	font-size: 0.6vw;
+	font-size: 0.75vw;
 }
 
 table.panel {
@@ -161,6 +153,7 @@ div.content {
 	padding: 1vw;
 	width: 100%;
 	height: 35vw;
+	overflow-y: auto;
 }
 
 
