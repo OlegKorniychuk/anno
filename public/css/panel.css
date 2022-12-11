@@ -69,7 +69,7 @@ div.userRole {
 	text-shadow: 0 0 0.25vw #1BA098;
 }
 
-div.logBtn {
+div.logBtn, button.logBtn {
 	padding: 0.5vw;
 	display: inline-block;
 	background-color: #1BA098;
@@ -78,6 +78,7 @@ div.logBtn {
 	font-weight: bold;
 	text-shadow: none;
 	box-shadow: 0 0 0.25vw 0 #1BA098;
+  border: none;
 	transition: background-color 0.3s ease;
 }
 div.logBtn:hover {

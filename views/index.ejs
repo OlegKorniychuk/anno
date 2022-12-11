@@ -66,8 +66,11 @@
 							</tbody>
 						</table>
 						<div class="panelLine"></div>
-						<div id="main" class="content">
-							
+						<div id="main" class="content" style="color: white;">
+              <% files.forEach(file => { %>
+              <div><%= file.content %> </div>  
+              <%}); %>
+              <a href="/viewfile">viewfile</a>  
 						</div>
 					</td>
 					<td class="side">
@@ -83,7 +86,9 @@
 										</div>
 									</td>
 									<td class="logOut">
-										<div class="logBtn">LOG OUT</div>
+										<form action="/logout?_method=DELETE", method="POST">
+                      <button class="logBtn" type="submit">LOG OUT</div>
+                    </form>
 									</td>
 								</tr>
 							</tbody>

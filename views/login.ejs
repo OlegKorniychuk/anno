@@ -8,18 +8,23 @@
 </head>
 <body>
 
-<div class="authCenter">
+<div class="centerBox">
 	<div class="authBlock">
-		<div class="authHeader">AUTHORIZATION</div>
+		<div class="authHeader">AUTHORIZATION</div>     
 		<div class="authLine"></div>
-		<form class="authForm">
-			<input id="eml" type="email" placeholder="EMAIL" />
-			<input id="password" type="password" placeholder="PASSWORD" />
+    <div class="authMessage">
+      <% if (messages.error) { %>
+        <%= messages.error %>
+        <%} %>
+    </div>
+		<form class="authForm" action="/login" method="POST">
+			<input id="eml" type="email" name="email" placeholder="EMAIL" />
+			<input id="password" type="password" name="password" placeholder="PASSWORD" />
 			<input class="button" id="submit" type="submit" value="LOG IN" />
 		</form>
 		<div class="authSugBtn">
 			DON'T HAVE AN ACCOUNT YET?
-			<a href="./register.html">REGISTER NOW</a>
+			<a href="./register">REGISTER NOW</a>
 		</div>
 	</div>
 </div>

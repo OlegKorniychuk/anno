@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="../public/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="../public/css/auth.css" />
+	<title>REGISTER</title>
+</head>
+<body>
+
+<div class="centerBox">
+	<div class="authBlock">
+		<div class="authHeader">AUTHORIZATION</div>
+		<div class="authLine"></div>
+		<form class="authForm" action="/register" method="POST">
+			<input id="usrname" type="text" name="username" placeholder="USERNAME" required/>
+			<input id="eml" type="email" name="email" placeholder="EMAIL" required/>
+			<input id="password" type="password" name="password" placeholder="PASSWORD" required/>
+			<input id="conf_password" type="password" name="confirmPassword" placeholder="CONFIRM PASSWORD" required/>
+			<input class="button" id="submit" type="submit" value="REGISTER" required/>
+		</form>
+		<div class="authSugBtn">
+			ALREADY HAVE AN ACCOUNT?
+			<a href="./login">LOG IN</a>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
