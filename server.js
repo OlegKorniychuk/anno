@@ -36,29 +36,55 @@ const files = [
     id: 19074981,
     name: 'file-1',
     authorId: 12970519581, //links to author`s ID
-    status: 64,
-    content: 'amogus'
+    statusNer: 64,
+    statusSentiment: 38,
+    statusIntention: 74,
+    content: 'amogus',
+    markdownNer: 'something',
+    markdownSentiment: 'something else',
+    markdownIntention: 'whatever',
+    editor1: 6798174609,
+    editor2: null,
   },
   {
     id: 41245981,
     name: 'file-1',
     authorId: 75928620, //links to author`s ID
-    status: 64,
-    content: 'imposter'
+    statusNer: 21,
+    statusSentiment: 38,
+    statusIntention: 74,
+    content: 'imposter',
+    markdownNer: 'something',
+    markdownSentiment: 'something else',
+    markdownIntention: 'whatever',
+    editor1: 6798174609,
+    editor2: null,
   },
   {
     id: 19050950,
     name: 'file-1',
     authorId: 75928620, //links to author`s ID
-    status: 64,
-    content: 'sus'
+    statusNer: 97,
+    statusSentiment: 38,
+    statusIntention: 74,
+    content: 'sus',
+    markdownNer: 'something',
+    markdownSentiment: 'something else',
+    markdownIntention: 'whatever',
+    editor1: 6798174609,
+    editor2: null,
   },
   {
     id: 83570981,
     name: 'file-1',
     authorId: 12970519581, //links to author`s ID
-    status: 64,
-    content: 'aboba'
+    status: 50,
+    content: 'aboba',
+    markdownNer: 'something',
+    markdownSentiment: 'something else',
+    markdownIntention: 'whatever',
+    editor1: 6798174609,
+    editor2: null,
   },
 ]
 
@@ -139,7 +165,7 @@ app.get('/index', checkAuthenticated, (req, res) => {
 //---viewfile
 
 app.get('/viewfile', (req, res) => {
-  res.render('viewfile');
+  res.render('viewfile', { file: files[0] });
 })
 
 //---editfile---

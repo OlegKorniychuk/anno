@@ -15,20 +15,20 @@
 			<tbody>
 				<tr>
 					<td class="fileName">
-						<div id="file_name">Filename</div>
+						<div id="file_name"><%= file.name %> </div>
 					</td>
 					<td class="fileActions">
 						<div id="markdown" class="fileMarkdown">
-							<div class="markdownLabel">MARKDOWN TYPE</div>
-							<div class="fileDrpDn">
-								<div class="fileDrpItm">NER</div>
-								<div class="fileDrpItm">Sentiment</div>
-								<div class="fileDrpItm">Intent Recognition</div>
-							</div>
+							<select class="fileDrpDn">
+                <option value="0" class="fileDrpItm">MARKDOWN TYPE</option>
+								<option value="1" class="fileDrpItm">NER</option>
+								<option value="2" class="fileDrpItm">Sentiment</option>
+								<option value="3" class="fileDrpItm">Intent Recognition</option>
+              </select>
 						</div>
 						<div id="progress" class="fileProgress">
-							30%
-							<div class="progressBar"></div>
+							<%= file.statusNer %>% 
+							<progress class="progressBar" max="100" value="<%=file.statusNer%>"></progress>
 						</div>
 					</td>
 				</tr>
