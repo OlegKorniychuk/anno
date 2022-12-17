@@ -11,33 +11,35 @@ div.fileMarkdown {
 	display: inline-block;
 	width: 10vw;
 }
-div.fileMarkdown > div.fileDrpDn {
+div.fileMarkdown > select.fileDrpDn {
+	appearance: none;
+	border: none;
+	padding: 0.5vw;
 	width: 10vw;
-	display: none;
-	position: absolute;
-	background-color: #0b1b26;
-	text-align: left;
-	z-index: 1;
-	overflow-y: auto;
+	background-color: #1BA098;
+	font-family: "Comfortaa";
+	text-align: center;
 	text-transform: uppercase;
-	font-weight: normal;
+	font-weight: bold;
 	box-shadow: 0 0 0.25vw 0 #000;
+	cursor: pointer;
 }
-div.fileMarkdown > div.fileDrpDn > div.fileDrpItm {
+div.fileMarkdown > select.fileDrpDn:focus {
+	outline: none;
+}
+div.fileMarkdown > select.fileDrpDn > option.fileDrpItm {
+	text-align: left;
+	font-weight: bold;
+	border: none;
+	background-color: #0b1b26;
 	color: #DEB992;
 	padding: 0.5vw;
 	cursor: pointer;
 	transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }
-div.fileMarkdown > div.fileDrpDn > div.fileDrpItm:hover {
+div.fileMarkdown > select.fileDrpDn > option.fileDrpItm:hover {
 	background-color: #1b2b36;
 	text-shadow: 0 0 0.25vw #DEB992;
-}
-div.fileMarkdown:hover > div.fileDrpDn {
-	display: block;
-}
-div.fileMarkdown:has(div.fileDrpDn:hover) > div.markdownLabel {
-	background-color: #48b5af;
 }
 
 div.markdownLabel {
