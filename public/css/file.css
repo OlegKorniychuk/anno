@@ -21,12 +21,13 @@ table.fileBottom {
 	width: 100%;
 }
 
-div.fileBtn {
+.fileBtn {
 	display: inline-block;
 	padding: 0.5vw;
 	width: 5vw;
 	background-color: #1BA098;
 	color: #051622;
+	text-decoration: none;
 	cursor: pointer;
 	font-weight: bold;
 	text-align: center;
@@ -34,7 +35,7 @@ div.fileBtn {
 	transition: background-color 0.3s ease;
 	box-sizing: border-box;
 }
-div.fileBtn:hover {
+.fileBtn:hover {
 	background-color: #48b5af;
 }
 
