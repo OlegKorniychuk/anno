@@ -2,6 +2,9 @@
 <html>
 <head>
 	<meta charset="utf-8" />
+	<link rel="stylesheet" type="text/css" href="./style.css" />
+	<link rel="stylesheet" type="text/css" href="./file.css" />
+	<link rel="stylesheet" type="text/css" href="./viewfile.css" />
 	<link rel="stylesheet" type="text/css" href="../public/css/style.css" />
 	<link rel="stylesheet" type="text/css" href="../public/css/file.css" />
 	<link rel="stylesheet" type="text/css" href="../public/css/viewfile.css" />
@@ -15,16 +18,16 @@
 			<tbody>
 				<tr>
 					<td class="fileName">
-						<div id="file_name"><%= file.name %> </div>
+						<div id="file_name">Filename</div>
 					</td>
 					<td class="fileActions">
 						<div id="markdown" class="fileMarkdown">
-							<select class="fileDrpDn">
-                						<option value="0" class="fileDrpItm">MARKDOWN TYPE</option>
-								<option value="1" class="fileDrpItm">NER</option>
-								<option value="2" class="fileDrpItm">Sentiment</option>
-								<option value="3" class="fileDrpItm">Intent Recognition</option>
-              						</select>
+							<div id="mrkdwn_type" class="markdownLabel">MARKDOWN TYPE</div>
+							<div class="fileDrpDn">
+								<div id="mrkdwn_0" class="fileDrpItm"></div>
+								<div id="mrkdwn_1" class="fileDrpItm"></div>
+								<div id="mrkdwn_2" class="fileDrpItm"></div>
+							</div>
 						</div>
 						<div id="progress" class="fileProgress">
 							<%= file.statusNer %>% 
@@ -36,23 +39,73 @@
 		</table>
 		<div class="fileLine"></div>
 		<div class="content">
-			
+
 		</div>
 		<div class="fileLine"></div>
 		<table class="fileBottom">
 			<tbody>
 				<tr>
 					<td class="backBtn">
-						<a id="file_back" class="fileBtn" href="/index">BACK</a>
+						<div id="file_back" class="fileBtn">BACK</div>
 					</td>
 					<td class="editBtn">
-						<a id="file_edit" class="fileBtn" href="/editfile">EDIT</a>
+						<div id="file_edit" class="fileBtn">EDIT</div>
 					</td>
 				</tr>
 			</tbody>
 		</table>
 	</div>
 </div>
+
+<script type="text/javascript">
+	const MRKDWN_LABEL = 'Markdown Type',
+	MRKDWN_OPTIONS = [
+		{
+			label: 'NER',
+			chosen: false
+		},
+		{
+			label: 'Sentiment',
+			chosen: false
+		},
+		{
+			label: 'Intent Recognition',
+			chosen: false
+		}
+	];
+
+	const select = num => {
+		const option = MRKDWN_OPTIONS[num];
+
+		if (!option.chosen) {
+			option.chosen = true;
+
+			for (let i = 0; i < MRKDWN_OPTIONS.length; i++) {
+				const element = document.getElementById(`mrkdwn_${i}`);
+
+				if (i !== num) {
+					MRKDWN_OPTIONS[i].chosen = false;
+					element.classList.remove('chosen');
+				} else {
+					document.getElementById('mrkdwn_type').textContent = option.label;
+					element.classList.add('chosen');
+				}
+			}
+		}
+	};
+
+	for (const option of MRKDWN_OPTIONS) {
+		const id = MRKDWN_OPTIONS.indexOf(option);
+
+		document.getElementById(`mrkdwn_${id}`).textContent += option.label;
+	}
+
+	document.getElementById('mrkdwn_0').addEventListener('click', async () => select(0));
+
+	document.getElementById('mrkdwn_1').addEventListener('click', async () => select(1));
+
+	document.getElementById('mrkdwn_2').addEventListener('click', async () => select(2));
+</script>
 
 </body>
 </html>
