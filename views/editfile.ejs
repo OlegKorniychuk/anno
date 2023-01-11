@@ -28,7 +28,15 @@
 						</table>
 						<div class="fileLine"></div>
 						<div class="content">
-							
+							<div class="textBlock">
+								<div class="toolbar">
+									<button id="person" class="toolBtn person">PERSON</button>
+									<button id="org" class="toolBtn org">ORG</button>
+									<button id="location" class="toolBtn location">LOCATION</button>
+									<button id="other" class="toolBtn other">OTHER</button>
+								</div>
+								<div id="textArea"></div>
+							</div>
 						</div>
 						<div class="fileLine"></div>
 						<table class="fileBottom">
@@ -76,6 +84,68 @@
 		</table>
 	</div>
 </div>
+
+<script type="text/javascript">
+const FROM_DB = 'Text text text';
+
+const text = FROM_DB.replace(/\s\s+/g, ' ');
+
+const words = text.split(' ');
+
+for (let i = 0; i < words.length; i++) {
+	document.getElementById('textArea').innerHTML += `<span class="word" id="word${i}">${words[i]}</span> `;
+}
+
+const wordObjects = document.querySelectorAll('.word');
+
+const selectColor = (words, color) => {
+	words.forEach(word => {
+		word.addEventListener('click', () => {
+			word.setAttribute('style', `background-color: ${color}; color: #1b2b36`);
+		});
+	});
+}
+
+document.getElementById('person').addEventListener('click', () => {
+	if (!document.getElementById('person').classList.contains('selected')) {
+		for (const btn of document.querySelectorAll('.toolBtn')) {
+			btn.classList.remove('selected');
+		}
+		document.getElementById('person').classList.add('selected');
+	}
+	selectColor(wordObjects, '#d79bf2');
+});
+
+document.getElementById('org').addEventListener('click', () => {
+	if (!document.getElementById('org').classList.contains('selected')) {
+		for (const btn of document.querySelectorAll('.toolBtn')) {
+			btn.classList.remove('selected');
+		}
+		document.getElementById('org').classList.add('selected');
+	}
+	selectColor(wordObjects, '#eff29b');
+});
+
+document.getElementById('location').addEventListener('click', () => {
+	if (!document.getElementById('location').classList.contains('selected')) {
+		for (const btn of document.querySelectorAll('.toolBtn')) {
+			btn.classList.remove('selected');
+		}
+		document.getElementById('location').classList.add('selected');
+	}
+	selectColor(wordObjects, '#9bf2bc');
+});
+
+document.getElementById('other').addEventListener('click', () => {
+	if (!document.getElementById('other').classList.contains('selected')) {
+		for (const btn of document.querySelectorAll('.toolBtn')) {
+			btn.classList.remove('selected');
+		}
+		document.getElementById('other').classList.add('selected');
+	}
+	selectColor(wordObjects, '#f29b9b');
+});
+</script>
 
 </body>
 </html>
