@@ -133,6 +133,7 @@ div.ctgrList, div.stlList {
 	font-weight: normal;
 	box-shadow: 0 0 0.25vw 0 #000;
 }
+
 div.dropCtgr:has(input:focus) div.ctgrList {
 	display: block;
 }
@@ -140,7 +141,8 @@ div.dropStl:has(input:focus) div.stlList {
 	display: block;
 }
 
-div.dropItem {
+
+div.dropItem, div.dropItemStyle {
 	padding: 0.5vw;
 	cursor: pointer;
 	transition: box-shadow 0.3s ease, background-color 0.3s ease;
