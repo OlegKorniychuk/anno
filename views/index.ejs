@@ -20,7 +20,7 @@
 							<tbody>
 								<tr>
 
-                  <form action="/index" method="GET">
+                  <form action="/index" method="GET" id="indexForm">
 									  <td class="switchTab">
   										<table class="switchTab">
 											  <tbody>
@@ -41,27 +41,19 @@
 									  <td class="filter">
   										<div class="filter">
 											  <div class="dropCtgr">
-  												<input id="category" name="category" type="text" placeholder="CATEGORY" onkeyup="filterFunction()"/>
+  												<input id="category" name="category" type="text" placeholder="CATEGORY" value="<%= category %>" onkeyup="filterFunction('category', '.dropItemCategory')"/>
 												  <div class="ctgrList">
-  													<div id="ctgr1" class="dropItem" onclick="dropItemOnClick('category','ctgr1', categories)">Category 1</div>
-													  <div id="ctgr2" class="dropItem">Category 2</div>
-													  <div id="ctgr3" class="dropItem">Category 3</div>
-													  <div id="ctgr4" class="dropItem" onclick="dropItemOnClick('category','ctgr4')">Category 3</div>
-													  <div class="dropItem">Category 3</div>
-													  <div class="dropItem">Category 3</div>
-													  <div class="dropItem">Category 3</div>
-													  <div class="dropItem">Category 3</div>
-													  <div class="dropItem">Category 3</div>
-													  <div class="dropItem">Category 3</div>
-													  <div class="dropItem">Category 3</div>
+  													<% categoriesList.forEach(element => { %>
+                             <div class="dropItemCategory" name="category" id="<%= element.category %>" onclick="dropItemOnClick('category', '<%= element.category %>'); document.forms['indexForm'].submit()"> <%= element.category %> </div>
+                            <% }) %>
 												  </div>
 											  </div>
 											  <div class="dropStl">
-  												<input id="style" name="style" type="text" placeholder="STYLE" />
+  												<input id="style" name="style" type="text" placeholder="STYLE" value="<%= style %>" onkeyup="filterFunction('style', '.dropItemStyle')"/>
 												  <div class="stlList">
-  													<div id="stl1" class="dropItemStyle">Style 1</div>
-													  <div id="stl2" class="dropItemStyle">Style 2</div>
-													  <div id="stl3" class="dropItemStyle">Style 3</div>
+  													<div id="style1" class="dropItemStyle" onclick="dropItemOnClick('style', 'style1'); document.forms['indexForm'].submit()">Style 1</div>
+													  <div id="style2" class="dropItemStyle" onclick="dropItemOnClick('style', 'style2'); document.forms['indexForm'].submit()">Style 2</div>
+													  <div id="style3" class="dropItemStyle" onclick="dropItemOnClick('style', 'style3'); document.forms['indexForm'].submit()">Style 3</div>
 												  </div>
 											  </div>
 										  </div>
@@ -112,7 +104,7 @@
                   <div style="padding: 10px 10px 10px 10px;">
                     <div><%=element.file_id%></div>
                     <div><%=element.file_name%></div>
-                    <a href="/viewfile">VIEW</a>
+                    <a href="/viewfile/<%= element.file_id %>" style="color:aqua; text-decoration: none;">VIEW</a>
                   </div>
                   <div class="panelLine" style="width: 95%;"></div>
                 <% }) %>

@@ -11,7 +11,6 @@ const bodyParser = require('body-parser');
 const flash = require('express-flash');
 const session = require('express-session');
 const methodOverride = require('method-override');
-const fs = require('fs');
 const db = require('./db.js');
 
 const initPassport = require('./passport-config.js');
@@ -181,16 +180,20 @@ app.get('/index', checkAuthenticated, (req, res) => {
   async.parallel([
     function(paralel_done) {
       let query1 = `SELECT files.file_id, files.file_name, users.user_name AS admin_name FROM files, users WHERE users.user_id = files.admin_id`
-      if (req.query.selector == 'on') querry +=` AND files.status = 'ready'`;
-      if (req.query.category) querry +=` AND files.category = ${req.query.category}`;
-      if (req.query.style) querry +=` AND files.style = ${req.query.style}`;
+      if (req.query.slider == 'on') {
+        query1 +=` AND files.isReady = 0`
+      } else {
+        query1 +=` AND files.isReady = 1`
+      };
+      if (req.query.category) query1 +=` AND files.category = '${req.query.category.toLowerCase().trim()}'`;
+      if (req.query.style) query1 +=` AND files.style = '${req.query.style}'`;
       db.query(query1, (err, result) => {
         if (err) {
           console.log(err);
           return paralel_done(err);
         }
         finalData.fileHeaders = result;
-        console.log(result);
+        //console.log(result);
         paralel_done();
       })
     },
@@ -202,8 +205,19 @@ app.get('/index', checkAuthenticated, (req, res) => {
           return paralel_done(err);
         }
         finalData.editedFiles = edited;
-        console.log(edited);
-        paralel_done(err);
+        //console.log(edited);
+        paralel_done();
+      })
+    },
+    function(paralel_done) {
+      db.query('SELECT category from files', (err, categories) => {
+        if (err) {
+          console.log(err);
+          return paralel_done(err);
+        }
+        finalData.categoriesList = categories;
+        //console.log(finalData.categoriesList);
+        paralel_done();
       })
     }
   ], function(err) {
@@ -233,7 +247,7 @@ app.post('/index', (req, res) => {
 
 app.get('/viewfile/:id', (req, res) => {
   const {id} = req.params;
-  db.query('',(err, file) => {
+  db.query('SELECT ',(err, file) => {
     res.render('viewfile', { file: files[0] });
   })
 })

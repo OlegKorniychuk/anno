@@ -10,20 +10,11 @@
 //   });
 // };
 
-const categories = {};
 
-window.onload = () => {
-  document.querySelectorAll(".dropItem").forEach((item) => {
-    categories[item.id] = item.innerText;
-  })
-}
-
-console.log(categories);
-
-function filterFunction() {
-  let input = document.getElementById("category");
+function filterFunction(inputId, dropItemClass) {
+  let input = document.getElementById(inputId);
   let filter = input.value.toUpperCase();
-  let a = document.querySelectorAll(".dropItem");
+  let a = document.querySelectorAll(dropItemClass);
   for (i = 0; i < a.length; i++) {
     txtValue = a[i].textContent || a[i].innerText;
     if (txtValue.toUpperCase().indexOf(filter) > -1) {
@@ -35,7 +26,9 @@ function filterFunction() {
 }
 
 
-const dropItemOnClick = async (inputId, dropItemId, itemsStorage) => {
-  document.getElementById(inputId).value = itemsStorage[dropItemId];
-  console.log("chosen");
+const dropItemOnClick = (inputId, dropItemId) => {
+  const value = document.getElementById(dropItemId).innerText;
+  console.log(value);
+  console.log(dropItemId);
+  document.getElementById(inputId).value = value;
 }
