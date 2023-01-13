@@ -69,7 +69,14 @@ const fileProcessor = {
               if (err) console.log(err);
             }
           );
-        },
+        }
+      }
+      if (err) {
+        console.log(err);
+      }
+    });
+    return endCatalog;
+  },
   getSortedPartials: (partialsFolder) => {
     const partials = fs.readdirSync(partialsFolder)
     partials.sort((a, b) => {
@@ -81,15 +88,7 @@ const fileProcessor = {
     const file = fs.readFileSync(pathToFile, 'utf-8');
     return file;
   }
-      }
-      if (err) {
-        console.log(err);
-      }
-    });
-    return endCatalog;
-  },
 };
 
-console.log(fileProcessor.viewFile('./data/aboba1partInitial/', './data/aboba1partReady/'))
 
 module.exports = fileProcessor;
