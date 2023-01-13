@@ -122,7 +122,7 @@ div.dropCtgr {
 div.ctgrList, div.stlList {
 	width: 10vw;
 	max-height: 9.5vw;
-	/* display: none; */
+	display: none;
 	position: absolute;
 	background-color: #0b1b26;
 	text-align: left;
@@ -139,6 +139,13 @@ div.dropCtgr:has(input:focus) div.ctgrList {
 }
 div.dropStl:has(input:focus) div.stlList {
 	display: block;
+}
+
+div.ctgrList:hover {
+  display: block;
+}
+div.stlList:hover {
+  display: block;
 }
 
 

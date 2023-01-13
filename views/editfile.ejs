@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" type="text/css" href="../public/css/style.css" />
-	<link rel="stylesheet" type="text/css" href="../public/css/file.css" />
-	<link rel="stylesheet" type="text/css" href="../public/css/editfile.css" />
+	<link rel="stylesheet" type="text/css" href="/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="/css/file.css" />
+	<link rel="stylesheet" type="text/css" href="/css/editfile.css" />
 	<title>EDIT FILE</title>
 </head>
 <body>
@@ -21,7 +21,7 @@
 										<div id="file_name">Filename</div>
 									</td>
 									<td class="fileActions">
-										<a id="file_back" class="fileBtn" href="/viewfile">BACK</a>
+										<div id="file_back" class="fileBtn" onclick="history.back()">BACK</div>
 									</td>
 								</tr>
 							</tbody>
@@ -35,7 +35,12 @@
 									<button id="location" class="toolBtn location">LOCATION</button>
 									<button id="other" class="toolBtn other">OTHER</button>
 								</div>
-								<div id="textArea"></div>
+                <form action="/editfile/<%= fileId %>/<%= markdown %>/<%= nextPart %>" method="POST" id="textForm">
+								  <div id="textArea" style="font-size: 16px;">
+                    <%= part %> 
+                  </div>
+                  <input type="hidden" name="text" id="text">
+                </form>
 							</div>
 						</div>
 						<div class="fileLine"></div>
@@ -86,11 +91,13 @@
 </div>
 
 <script type="text/javascript">
-const FROM_DB = 'Text text text';
+const FROM_DB = document.getElementById("textArea").innerHTML + '';
 
 const text = FROM_DB.replace(/\s\s+/g, ' ');
 
 const words = text.split(' ');
+
+document.getElementById('textArea').innerHTML = '';
 
 for (let i = 0; i < words.length; i++) {
 	document.getElementById('textArea').innerHTML += `<span class="word" id="word${i}">${words[i]}</span> `;
@@ -145,6 +152,16 @@ document.getElementById('other').addEventListener('click', () => {
 	}
 	selectColor(wordObjects, '#f29b9b');
 });
+
+document.getElementById('file_accept').addEventListener('click', () => {
+  const editedText = document.getElementById('textArea').innerHTML;
+  document.getElementById('text').value = editedText;
+  document.getElementById('textForm').submit();
+})
+
+document.getElementById('file_clear').addEventListener('click', () => {
+  window.location.reload();
+})
 </script>
 
 </body>

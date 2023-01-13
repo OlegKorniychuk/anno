@@ -1,15 +1,4 @@
-// window.onload = () => {
-//   const slider = document.getElementById("slider");
-
-//   slider.addEventListener("click", function () {
-//     console.log(slider.checked);
-//     const param = slider.checked == true ? "edit" : "download"; 
-//     fetch(`/index?type=${param}`, { method: 'GET' })
-//     .then(response => console.log(response))
-//     .catch(data => console.log(data));
-//   });
-// };
-
+//INDEX
 
 function filterFunction(inputId, dropItemClass) {
   let input = document.getElementById(inputId);
@@ -32,3 +21,11 @@ const dropItemOnClick = (inputId, dropItemId) => {
   console.log(dropItemId);
   document.getElementById(inputId).value = value;
 }
+
+document.getElementById('category').addEventListener('keypress', (e) => {
+  console.log('keypress')
+  console.log(e);
+  if (e.code == 'Enter') {
+    document.getElementById("indexForm").submit();
+  }
+})

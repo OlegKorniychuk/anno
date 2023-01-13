@@ -4,6 +4,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 
 const async = require("async");
+const path = require("path");
 const express = require("express");
 const passport = require('passport');
 const bcrypt = require('bcrypt');
@@ -12,6 +13,7 @@ const flash = require('express-flash');
 const session = require('express-session');
 const methodOverride = require('method-override');
 const db = require('./db.js');
+const fp = require('./utils.js');
 
 const initPassport = require('./passport-config.js');
 initPassport(
@@ -96,7 +98,7 @@ const textFilePath = 'data/aboba.txt';
 
 app.set('view engine', 'ejs');
 
-app.use(express.static(__dirname));
+app.use(express.static(__dirname+'/public'));
 app.use(bodyParser.urlencoded({
   extended: false 
 }));
@@ -154,27 +156,6 @@ app.post('/register', checkNotAuthenticated, async (req, res) => {
 //--index, index-logOut--
 
 app.get('/index', checkAuthenticated, (req, res) => {
-  // let fileHeaders;
-
-  // db.query(`SELECT files.file_id, files.file_name, users.user_name AS admin_name FROM files, users WHERE users.user_id = files.admin_id`, (err, result) => {
-  //   if (err) {
-  //     console.log(err);
-  //   } else {
-  //     fileHeaders = result;
-  //     console.log(fileHeaders);
-  //     const userId = req.user.id;
-  //     db.query(`SELECT files.file_id, files.file_name FROM files JOIN branch WHERE branch.editor_id = ${userId}`, (err, edited) => {
-  //       if (err) {
-  //         console.log(err);
-  //       } else {
-  //         editedFiles = edited;
-  //         console.log(edited);
-  //         res.render('index.ejs', { headers: fileHeaders, edited: editedFiles, slider: "on" });
-  //       }  
-  //     })
-  //   }  
-  // })
-
   let finalData = {};
 
   async.parallel([
@@ -226,7 +207,7 @@ app.get('/index', checkAuthenticated, (req, res) => {
     finalData.sliderValue = req.query.slider;
     finalData.category = req.query.category;
     finalData.style = req.query.style; 
-    console.log(finalData.sliderValue);
+    console.log("Slider position: ",finalData.sliderValue);
     res.render('index.ejs', finalData)
   })
 })
@@ -245,17 +226,64 @@ app.post('/index', (req, res) => {
 
 //---viewfile
 
-app.get('/viewfile/:id', (req, res) => {
-  const {id} = req.params;
-  db.query('SELECT ',(err, file) => {
-    res.render('viewfile', { file: files[0] });
+app.get('/viewfile/:fileId', checkAuthenticated, (req, res) => {
+  const fileId = req.params.fileId;
+  console.log('FileID: ',fileId);
+  const userId = req.user.id; 
+  const markdownType = req.query.markdownType || "NER";
+  db.query(`SELECT files.file_name, markdown_${markdownType}.markdown_status ,markdown_${markdownType}.partials_ready, markdown_${markdownType}.partials_not_ready FROM files JOIN branch JOIN markdown_${markdownType} WHERE files.file_id = ${fileId} AND branch.editor_id = ${userId} AND branch.${markdownType} = markdown_${markdownType}.markdown_id`, (err, [result]) => {
+    if (err) {
+      console.log(err);
+      res.send('Shit happened');
+      return;
+    }
+    console.log('View query result: ', result);
+    const fileName = result.file_name;
+    const partReadyPath = path.resolve(__dirname + result.partials_ready);
+    const partNotReadyPath = path.resolve(__dirname + result.partials_not_ready);
+    const contents = fp.viewFile(partNotReadyPath, partReadyPath);
+    const firstPartial = fp.getSortedPartials(partNotReadyPath)[0];
+    res.render('viewfile.ejs', { 
+      file: contents, 
+      firstPartial: firstPartial, 
+      fileId: fileId, 
+      fileName: fileName,
+      markdown: markdownType,
+    });
   })
 })
 
 //---editfile---
 
-app.get('/editfile', (req, res) => {
-  res.render('editfile');
+app.get('/editfile/:fileId/:markdown/:partName', checkAuthenticated, (req, res) => {
+  console.log('Query: ', req.params);
+  const userId = req.user.id;
+  const fileId = req.params.fileId;
+  const partName = req.params.partName;
+  const markdownType = req.params.markdown;
+  db.query(`SELECT markdown_${markdownType}.partials_ready, markdown_${markdownType}.partials_not_ready FROM files JOIN branch JOIN markdown_${markdownType} WHERE files.file_id = ${fileId} AND branch.editor_id = ${userId} AND branch.${markdownType} = markdown_${markdownType}.markdown_id`, (err, [result]) => {
+    if (err) {
+      console.log(err);
+    }
+    console.log(result);
+    const currentPart = fp.readFile(path.resolve(__dirname+result.partials_not_ready+partName))
+    const partsArray = fp.getSortedPartials(path.resolve(__dirname+result.partials_not_ready))
+    const nextPartName = partsArray[partsArray.indexOf(partName)+1];
+    res.render('editfile', { 
+      part: currentPart, 
+      fileId: fileId, 
+      markdown: markdownType, 
+      nextPart: nextPartName, 
+    });
+  })
+})
+
+app.post('/editfile/:fileId/:markdown/:partName', checkAuthenticated, (req, res) => {
+  const fileId = req.params.fileId;
+  const markdown = req.params.markdown;
+  const partName = req.params.partName;
+  console.log(req.body.text)
+  res.redirect(`/editfile/${fileId}/${markdown}/${partName}`);
 })
 
 

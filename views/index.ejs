@@ -2,10 +2,9 @@
 <html>
 <head>
 	<meta charset="utf-8" />
-	<link rel="stylesheet" type="text/css" href="../public/css/style.css" />
-	<link rel="stylesheet" type="text/css" href="../public/css/panel.css" />
-	<link rel="stylesheet" type="text/css" href="../public/css/switch.css" />
-  <script src="../public/scripts/script.js"></script>
+	<link rel="stylesheet" type="text/css" href="/css/style.css" />
+	<link rel="stylesheet" type="text/css" href="/css/panel.css" />
+	<link rel="stylesheet" type="text/css" href="/css/switch.css" />
 	<title>PANEL</title>
 </head>
 <body>
@@ -41,7 +40,7 @@
 									  <td class="filter">
   										<div class="filter">
 											  <div class="dropCtgr">
-  												<input id="category" name="category" type="text" placeholder="CATEGORY" value="<%= category %>" onkeyup="filterFunction('category', '.dropItemCategory')"/>
+  												<input id="category" name="category" type="text" placeholder="CATEGORY" value="<%= category %>" onkeyup="filterFunction('category', '.dropItemCategory')" autocomplete="off"/>
 												  <div class="ctgrList">
   													<% categoriesList.forEach(element => { %>
                              <div class="dropItemCategory" name="category" id="<%= element.category %>" onclick="dropItemOnClick('category', '<%= element.category %>'); document.forms['indexForm'].submit()"> <%= element.category %> </div>
@@ -49,7 +48,7 @@
 												  </div>
 											  </div>
 											  <div class="dropStl">
-  												<input id="style" name="style" type="text" placeholder="STYLE" value="<%= style %>" onkeyup="filterFunction('style', '.dropItemStyle')"/>
+  												<input id="style" name="style" type="text" placeholder="STYLE" value="<%= style %>" onkeyup="filterFunction('style', '.dropItemStyle')" autocomplete="off"/>
 												  <div class="stlList">
   													<div id="style1" class="dropItemStyle" onclick="dropItemOnClick('style', 'style1'); document.forms['indexForm'].submit()">Style 1</div>
 													  <div id="style2" class="dropItemStyle" onclick="dropItemOnClick('style', 'style2'); document.forms['indexForm'].submit()">Style 2</div>
@@ -115,5 +114,7 @@
 	</div>
 </div>
 
+
+<script src="/scripts/script.js"></script>
 </body>
 </html>

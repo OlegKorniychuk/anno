@@ -4,10 +4,10 @@ const fileProcessor = {
   viewFile: (partialsNotReady, partialsReady) => {
     function readFiles(dirname) {
       let result = [];
-      fs.readdirSync(dirname).forEach((fileName) => {
-        const contents = fs.readFileSync(dirname + fileName, 'utf-8');
-        result.push({ name: fileName, contents: contents });
-      });
+      fs.readdirSync(dirname).forEach(fileName => {
+      const contents = fs.readFileSync(dirname+'/'+fileName, 'utf-8');
+      result.push({ name: fileName, contents: contents})
+      })
       return result;
     }
     let allFiles = readFiles(partialsNotReady).concat(readFiles(partialsReady));
@@ -69,7 +69,18 @@ const fileProcessor = {
               if (err) console.log(err);
             }
           );
-        }
+        },
+  getSortedPartials: (partialsFolder) => {
+    const partials = fs.readdirSync(partialsFolder)
+    partials.sort((a, b) => {
+      return a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' });    
+    })
+    return partials;
+  },
+  readFile: (pathToFile) => {
+    const file = fs.readFileSync(pathToFile, 'utf-8');
+    return file;
+  }
       }
       if (err) {
         console.log(err);
@@ -79,13 +90,6 @@ const fileProcessor = {
   },
 };
 
-console.log(
-  fileProcessor.viewFile('./data/aboba1partInitial/', './data/aboba1partReady/')
-);
-console.log(
-  fileProcessor.parsingParagraph(
-    './data/exampleOriginal.txt',
-    './data/examplePartials'
-  )
-);
+console.log(fileProcessor.viewFile('./data/aboba1partInitial/', './data/aboba1partReady/'))
+
 module.exports = fileProcessor;
