@@ -88,5 +88,4 @@ console.log(
     './data/examplePartials'
   )
 );
-
 module.exports = fileProcessor;
