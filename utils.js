@@ -87,6 +87,16 @@ const fileProcessor = {
   readFile: (pathToFile) => {
     const file = fs.readFileSync(pathToFile, 'utf-8');
     return file;
+  },
+  completePart: (oldPath, newPath, contents) => {
+    fs.write(oldPath, contents, (err) => {
+      if (err) {
+        console.log(err);
+      }
+    })
+    fs.rename(oldPath, newPath, (err) => {
+      console.log(err);
+    })
   }
 };
 

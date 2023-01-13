@@ -282,7 +282,15 @@ app.post('/editfile/:fileId/:markdown/:partName', checkAuthenticated, (req, res)
   const fileId = req.params.fileId;
   const markdown = req.params.markdown;
   const partName = req.params.partName;
-  console.log(req.body.text)
+  const fileName = req.params.partName;
+  const userId = req.user.id;
+  db.query(`SELECT partials_not_ready, partials_ready FROM markdown_${markdown} JOIN branch JOIN files WHERE files.file_id=${fileId} AND branch.editor_id=${userId} AND branch.${markdown}=markdown_${markdown}.markdown_id`, (err, [result]) => {
+    const oldPath = path.resolve(__dirname+result.partials_not_ready+fileName);
+    const newPath = path.resolve(__dirname+result.partials_ready+fileName);
+    const contents = req.body.text;
+    console.log(oldPath, newPath, contents);
+    fp.completePart(oldPath, newPath, contents);
+  });
   res.redirect(`/editfile/${fileId}/${markdown}/${partName}`);
 })
 
