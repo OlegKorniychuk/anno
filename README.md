@@ -4,7 +4,8 @@ Text annotation for NLP made easy
 ## About
 Anno is a simple web app for annotating text data. Its purpose is creating annotated corpora for further NLP neural network learning.
 Anno provides ability for two editors to work on each file simultaniously under supervision of administrator for faster progress.
-Easy to use and intuitive interface ensures pleasant user experience.
+Easy to use and intuitive interface ensures pleasant user experience. Three different annotations 
+can be made for each file - for NER, sentiment analysis and intention recognition.
 
 ## Functionality
   ### For admin:
