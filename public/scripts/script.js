@@ -1,31 +1,26 @@
-//INDEX
+const filterFunction = (inputId, dropItemClass) => {
+  const input = document.getElementById(inputId),
+  filter = input.value.toUpperCase(),
+  a = document.querySelectorAll(dropItemClass);
 
-function filterFunction(inputId, dropItemClass) {
-  let input = document.getElementById(inputId);
-  let filter = input.value.toUpperCase();
-  let a = document.querySelectorAll(dropItemClass);
   for (i = 0; i < a.length; i++) {
     txtValue = a[i].textContent || a[i].innerText;
-    if (txtValue.toUpperCase().indexOf(filter) > -1) {
-      a[i].style.display = "";
-    } else {
-      a[i].style.display = "none";
-    }
-  }
-}
 
+    const ifIndex = txtValue.toUpperCase().indexOf(filter) > -1;
+
+    a[i].style.display = ifIndex ? '' : 'none';
+  }
+};
 
 const dropItemOnClick = (inputId, dropItemId) => {
   const value = document.getElementById(dropItemId).innerText;
-  console.log(value);
-  console.log(dropItemId);
-  document.getElementById(inputId).value = value;
-}
 
-document.getElementById('category').addEventListener('keypress', (e) => {
-  console.log('keypress')
-  console.log(e);
-  if (e.code == 'Enter') {
+  document.getElementById(inputId).value = value;
+};
+
+
+
+document.getElementById('category').addEventListener('keypress', e => {
+  if (e.code == 'Enter')
     document.getElementById("indexForm").submit();
-  }
-})
+});
