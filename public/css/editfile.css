@@ -142,11 +142,18 @@ button.toolBtn.selected:hover {
 }
 
 div#textArea {
-	padding: 1.25vw;
-	background-color: #1b2b36;
+	padding: 0.5vw;
+	background-color: #0b1b26;
+	font-size: 0.75vw;
 	font-weight: bold;
 	color: #DEB992;
+	overflow-y: auto;
+	line-height: 1.5vw;
 }
 div#textArea span {
 	cursor: pointer;
+	padding: 0.25vw;
+}
+div#textArea span:not(.painted):hover {
+	background-color: #1b2b36;
 }

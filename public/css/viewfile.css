@@ -68,7 +68,8 @@ div.markdownLabel:hover {
 div.fileProgress {
 	margin-left: 1vw;
 	padding: 0.5vw;
-	padding-bottom: 0.425vw;
+	padding-top: 0.6vw;
+	padding-bottom: 0.6vw;
 	display: inline-block;
 	width: 10vw;
 	text-align: center;
@@ -78,12 +79,9 @@ div.fileProgress {
 	background-color: #1b2b36;
 	box-sizing: border-box;
 }
-div.fileProgress > div.progressBar {
-	width: 30%;
-	height: 0.075vw;
+div.fileProgress > progress.progressBar {
+	width: 100%;
 	background-color: #1BA098;
-	box-shadow: 0 0 0.25vw 0 #1BA098;
-	transition: width 0.3s ease;
 }
 
 td.backBtn {
@@ -91,4 +89,10 @@ td.backBtn {
 }
 td.editBtn {
 	text-align: right;
+}
+
+
+
+div.viewBlock div.content {
+	user-select: text;
 }

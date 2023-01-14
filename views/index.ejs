@@ -65,15 +65,16 @@
 						<div class="panelLine"></div>
 						<div id="main" class="content" style="color: #DEB992;">
               <% fileHeaders.forEach(element => { %>  
-                  <div style="padding: 10px 10px 10px 10px;">
-                    <div><%=element.file_id%></div>
-                    <div><%=element.file_name%></div>
-                    <div><%=element.admin_name%></div>
-                    <form action="/index", method="POST">
-                      <button type="submit">Apply for editing</button>
-                    </form>
+                  <div class="fileBlock">
+                    <div class="headOfFile">File #<%=element.file_id%> - <%=element.file_name%></div>
+                    <div class="panelLine"></div>
+                    <div class="fileInfo">
+                    	<div class="adminOfFile">Admin: <%=element.admin_name%></div>
+	                    <form action="/index", method="POST">
+	                      <button class="fileBtn" type="submit">Apply for editing</button>
+	                    </form>
+                    </div>
                   </div>
-                  <div class="panelLine" style="width: 95%;"></div>
               <% }) %>  
 						</div>
 					</td>
@@ -100,12 +101,10 @@
 						<div class="panelLine"></div>
 						<div id="side" class="content" style="color:#DEB992;">
                 <% editedFiles.forEach(element => { %>
-                  <div style="padding: 10px 10px 10px 10px;">
-                    <div><%=element.file_id%></div>
-                    <div><%=element.file_name%></div>
-                    <a href="/viewfile/<%= element.file_id %>" style="color:aqua; text-decoration: none;">VIEW</a>
+                  <div class="onFileBlock">
+                    <div class="headOfOnFile">File #<%=element.file_id%> - <%=element.file_name%></div>
+                    <a class="viewLink" href="/viewfile/<%= element.file_id %>">VIEW</a>
                   </div>
-                  <div class="panelLine" style="width: 95%;"></div>
                 <% }) %>
 						</div>
 				</tr>
@@ -116,5 +115,6 @@
 
 
 <script src="/scripts/script.js"></script>
+
 </body>
 </html>

@@ -5,7 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/style.css" />
 	<link rel="stylesheet" type="text/css" href="/css/file.css" />
 	<link rel="stylesheet" type="text/css" href="/css/viewfile.css" />
-	<title>VIEW FILE</title>
+	<title>VIEW -> <%= fileName %></title>
 </head>
 <body>
 
@@ -30,7 +30,6 @@
 
 						</div>
 						<div id="progress" class="fileProgress">
-							66% 
 							<progress class="progressBar" max="100" value="66"></progress>
 						</div>
 					</td>
@@ -38,8 +37,8 @@
 			</tbody>
 		</table>
 		<div class="fileLine"></div>
-		<div class="content" style="color:bisque; font-size: 16px;">
-      <%= file %>
+		<div class="content">
+      		<%= file %>
 		</div>
 		<div class="fileLine"></div>
 		<table class="fileBottom">
@@ -109,5 +108,6 @@
 </script> -->
 
 <script src="/scripts/viewfile.js"></script>
+
 </body>
 </html>

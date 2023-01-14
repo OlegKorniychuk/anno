@@ -36,3 +36,13 @@ div.centerBox {
 ::-webkit-scrollbar-thumb {
 	background: #1BA098;
 }
+
+::-moz-selection {
+  color: #051622;
+  background: #1BA098;
+}
+
+::selection {
+  color: #051622;
+  background: #1BA098;
+}
