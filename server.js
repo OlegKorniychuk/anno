@@ -292,7 +292,7 @@ app.get('/viewfile/:fileId', checkAuth, (req, res) => {
       firstPartial: firstPartial, 
       fileId: fileId, 
       fileName: fileName,
-      markdown: markdownType,
+      markdown: markdownType
     });
   });
 });
@@ -326,9 +326,10 @@ app.get('/editfile/:fileId/:markdown/:partName', checkAuth, (req, res) => {
 
     res.render('editfile', { 
       part: currentPart, 
-      fileId: fileId, 
+      fileId: fileId,
+      partName: partName,
       markdown: markdownType, 
-      nextPart: nextPartName, 
+      nextPart: nextPartName,
     });
   });
 });

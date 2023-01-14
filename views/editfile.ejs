@@ -4,7 +4,7 @@
 	<link rel="stylesheet" type="text/css" href="/css/style.css" />
 	<link rel="stylesheet" type="text/css" href="/css/file.css" />
 	<link rel="stylesheet" type="text/css" href="/css/editfile.css" />
-	<title>EDIT FILE</title>
+	<title>EDIT <%= partName %></title>
 </head>
 <body>
 
@@ -18,7 +18,7 @@
 							<tbody>
 								<tr>
 									<td class="fileName">
-										<div id="file_name">Filename</div>
+										<div id="file_name"><%= partName %></div>
 									</td>
 									<td class="fileActions">
 										<div id="file_back" class="fileBtn" onclick="history.back()">BACK</div>
@@ -62,7 +62,7 @@
 					</td>
 					<td class="editSide">
 						<div class="sideLabel">
-							<p>MARKDOWN TYPE</p>
+							<p><%= markdown %></p>
 						</div>
 						<div class="fileLine"></div>
 						<div class="sideInfo">
