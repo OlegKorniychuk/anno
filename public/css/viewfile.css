@@ -90,3 +90,9 @@ td.backBtn {
 td.editBtn {
 	text-align: right;
 }
+
+
+
+div.viewBlock div.content {
+	user-select: text;
+}
