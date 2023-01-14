@@ -36,7 +36,7 @@
 									<button id="other" class="toolBtn other">OTHER</button>
 								</div>
                 <form action="/editfile/<%= fileId %>/<%= markdown %>/<%= nextPart %>" method="POST" id="textForm">
-								  <div id="textArea" style="font-size: 16px;">
+								  <div id="textArea">
                     <%= part %> 
                   </div>
                   <input type="hidden" name="text" id="text">
@@ -108,6 +108,7 @@ const wordObjects = document.querySelectorAll('.word');
 const selectColor = (words, color) => {
 	words.forEach(word => {
 		word.addEventListener('click', () => {
+			word.classList.add('painted');
 			word.setAttribute('style', `background-color: ${color}; color: #1b2b36`);
 		});
 	});
