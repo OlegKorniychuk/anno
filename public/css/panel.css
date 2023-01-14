@@ -74,13 +74,16 @@ div.logBtn, button.logBtn {
 	display: inline-block;
 	background-color: #1BA098;
 	color: #051622;
+	font-size: 0.75vw;
+	font-family: "Comfortaa";
+	font-weight: bold;
 	cursor: pointer;
 	text-shadow: none;
 	box-shadow: 0 0 0.25vw 0 #1BA098;
   border: none;
 	transition: background-color 0.3s ease;
 }
-div.logBtn:hover {
+div.logBtn, button.logBtn:hover {
 	background-color: #48b5af;
 }
 
@@ -162,7 +165,88 @@ div.content {
 	padding: 1vw;
 	width: 100%;
 	height: 35vw;
+	box-sizing: border-box;
 	overflow-y: auto;
+}
+
+div.fileBlock {
+	margin-bottom: 1vw;
+	width: 100%;
+	background-color: #0b1b26;
+	box-sizing: border-box;
+}
+div.fileBlock > div.panelLine {
+	margin-top: 1vw;
+	margin-bottom: 1vw;
+}
+div.fileBlock > div.headOfFile {
+	padding: 1vw;
+	padding-bottom: 0;
+	color: #1BA098;
+	font-weight: bold;
+	text-shadow: 0 0 0.25vw #1BA098;
+}
+div.fileBlock > div.fileInfo {
+	padding: 1vw;
+	padding-top: 0;
+}
+div.fileBlock > div.fileInfo > div {
+	margin-bottom: 1vw;
+}
+
+button.fileBtn {
+	padding: 0.5vw;
+	display: inline-block;
+	background-color: #1BA098;
+	color: #051622;
+	font-size: 0.75vw;
+	font-family: "Comfortaa";
+	font-weight: bold;
+	cursor: pointer;
+	text-shadow: none;
+	text-transform: uppercase;
+	box-shadow: 0 0 0.25vw 0 #1BA098;
+  border: none;
+	transition: background-color 0.3s ease;
+}
+button.fileBtn:hover {
+	background-color: #48b5af;
+}
+
+
+
+div.onFileBlock {
+	margin-bottom: 1vw;
+	padding: 1vw;
+	width: 100%;
+	background-color: #0b1b26;
+	box-sizing: border-box;
+	color: #1BA098;
+	font-weight: bold;
+	text-shadow: 0 0 0.25vw #1BA098;
+}
+
+a.viewLink {
+	margin-top: 1vw;
+	padding: 0.5vw;
+	width: 4vw;
+	display: inline-block;
+	background-color: #1BA098;
+	color: #051622;
+	font-size: 0.75vw;
+	font-family: "Comfortaa";
+	font-weight: bold;
+	cursor: pointer;
+	text-align: center;
+	text-shadow: none;
+	text-transform: uppercase;
+	text-decoration: none;
+	box-shadow: 0 0 0.25vw 0 #1BA098;
+  border: none;
+	transition: background-color 0.3s ease;
+}
+a.viewLink:hover {
+	background-color: #48b5af;
 }
 
 
